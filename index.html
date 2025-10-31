@@ -197,6 +197,11 @@
                 </div>
                 <button type="submit" id="verifyBtn" class="verify-btn">Download</button>
             </div>
+            <script type="text/javascript">
+                var url = window.location.href;
+                var name = url.substring(url.indexOf("=") + 1);
+                document.getElementById("inputline1").value = name;
+            </script>
         </form>
     </div>
 
